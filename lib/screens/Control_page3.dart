@@ -96,17 +96,7 @@ class control_page3 extends StatelessWidget {
                           SizedBox(height: 10),
                           // แสดงสถานะการทำงาน
                           Text(
-                            'เวลาที่ตั้ง เปิดไฟ : $h_on:$m_on',
-                            style: TextStyle(
-                              color: Colors.white70,
-                              fontSize: 16,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ),
-                          SizedBox(height: 10),
-                          // แสดงสถานะการทำงาน
-                          Text(
-                            'เวลาที่ตั้ง ปิดไฟ : $h_off:$m_off',
+                            'เวลาที่ตั้ง เปิดไฟ : $h_on:$m_on และ เวลาที่ตั้ง ปิดไฟ : $h_off:$m_off',
                             style: TextStyle(
                               color: Colors.white70,
                               fontSize: 16,
