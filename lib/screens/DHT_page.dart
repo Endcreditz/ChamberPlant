@@ -45,10 +45,10 @@ class _DHT_pageState extends State<DHT_page> {
   void listenToDHT() {
     firestore.collection('Sensors').doc('DHT11').snapshots().listen((snapshot) {
       if (snapshot.exists) {
-        String t = snapshot.data()?['Temperature;'] ?? '0';
+        String t = snapshot.data()?['Temperature'] ?? '0';
         double T_Value = double.tryParse(t) ?? 0.0;
 
-        String h = snapshot.data()?['Humidity;'] ?? '0';
+        String h = snapshot.data()?['Humidity'] ?? '0';
         double H_Value = double.tryParse(h) ?? 0.0;
 
         setState(() {
@@ -66,7 +66,7 @@ class _DHT_pageState extends State<DHT_page> {
 
           // จำกัดจำนวนจุดในกราฟ (แสดงจุดล่าสุด 60 จุด)
           if (spots1.length > 60) {
-            spots.removeAt(60);
+            spots1.removeAt(60);
           }
         });
       }
@@ -167,10 +167,10 @@ class _DHT_pageState extends State<DHT_page> {
                             icon: Icons.water_drop,
                             title: 'Humidity',
                             value: spots1.isNotEmpty
-                                ? '${spots.last.y.toStringAsFixed(2)} %'
+                                ? '${spots1.last.y.toStringAsFixed(2)} %'
                                 : '0 %',
                             graphColor: Colors.blue,
-                            data: spots),
+                            data: spots1),
                         SizedBox(height: 20),
                         LineChart21(
                             icon: Icons.thermostat,
@@ -179,7 +179,7 @@ class _DHT_pageState extends State<DHT_page> {
                                 ? '${spots.last.y.toStringAsFixed(2)} °C'
                                 : '0 °C',
                             graphColor: Colors.red,
-                            data: spots1),
+                            data: spots),
                         SizedBox(height: 20),
                         // สร้างปุ่ม ON/OFF
                         Row(

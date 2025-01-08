@@ -44,10 +44,10 @@ class _VL53L0X_pageState extends State<VL53L0X_page> {
         .snapshots()
         .listen((snapshot) {
       if (snapshot.exists) {
-        String WaterHeight = snapshot.data()?['Dif_Distance;'] ?? '0';
+        String WaterHeight = snapshot.data()?['Dif_Distance'] ?? '0';
         double WaterHeightValue = double.tryParse(WaterHeight) ?? 0.0;
 
-        String Volume = snapshot.data()?['Water_Volume;'] ?? '0';
+        String Volume = snapshot.data()?['Water_Volume'] ?? '0';
         double VolumeValue = double.tryParse(Volume) ?? 0.0;
 
         setState(() {
@@ -65,7 +65,7 @@ class _VL53L0X_pageState extends State<VL53L0X_page> {
 
           // จำกัดจำนวนจุดในกราฟ (แสดงจุดล่าสุด 60 จุด)
           if (spots1.length > 60) {
-            spots.removeAt(60);
+            spots1.removeAt(60);
           }
         });
       }
@@ -180,7 +180,7 @@ class _VL53L0X_pageState extends State<VL53L0X_page> {
                         LineChart11(
                           icon: Icons.auto_graph,
                           title: 'Water Volume',
-                          value: spots.isNotEmpty
+                          value: spots1.isNotEmpty
                               ? '${spots1.last.y.toStringAsFixed(2)} cm³'
                               : '0 cm³',
                           graphColor: const Color.fromARGB(255, 0, 38, 255),
